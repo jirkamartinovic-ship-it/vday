@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valentýnský den 💘</title>
+
+<style>
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg,#ffb6c1,#ffd1dc);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#3a0b1d;
+  }
+
+  .card{
+    background:#ffffffcc;
+    border-radius:26px;
+    padding:28px 24px;
+    width:min(700px,92vw);
+    box-shadow:0 18px 45px rgba(58,11,29,.25);
+    text-align:center;
+  }
+
+  h1{
+    margin-top:0;
+    font-size:clamp(26px,4vw,42px);
+  }
+
+  p{
+    font-size:18px;
+    opacity:.9;
+  }
+
+  .buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:22px;
+  }
+
+  button{
+    border:none;
+    border-radius:18px;
+    padding:16px;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff4d88,#ff77aa);
+    color:white;
+    box-shadow:0 14px 28px rgba(255,77,136,.35);
+    transition:.15s;
+  }
+
+  button:hover{
+    transform:translateY(-2px) scale(1.02);
+  }
+
+  .screen{ display:none; }
+  .screen.active{ display:block; }
+
+  .detail{
+    background:#fff;
+    border-radius:22px;
+    padding:22px;
+    margin-top:16px;
+    box-shadow:0 12px 26px rgba(58,11,29,.15);
+  }
+
+  .detail h2{
+    margin-top:0;
+    font-size:28px;
+  }
+
+  .back{
+    margin-top:18px;
+    background:#fff;
+    color:#5a1028;
+    border:2px solid #ff77aa;
+  }
+
+  @media(max-width:600px){
+    .buttons{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- ÚVOD -->
+  <div class="screen active" id="home">
+    <h1>Valentýnský den 💘</h1>
+    <p>Každé tlačítko je jedno překvapení…<br>klikni a uvidíš 😄</p>
+
+    <div class="buttons">
+      <button onclick="show(1)">🎁 Překvapení 1</button>
+      <button onclick="show(2)">🎁 Překvapení 2</button>
+      <button onclick="show(3)">🎁 Překvapení 3</button>
+      <button onclick="show(4)">🎁 Překvapení 4</button>
+      <button onclick="show(5)">🎁 Překvapení 5</button>
+      <button onclick="show(6)">🎁 Překvapení 6</button>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <div class="screen" id="s1">
+    <div class="detail">
+      <h2>🥞 Palačinky!</h2>
+      <p>
+        Udělal jsem ti palačinky a máš k nim svoji
+        <b>oblíbenou rybízovou marmeládu</b>…<br>
+        jeeeej 😄💘
+      </p>
+      <button class="back" onclick="home()">⬅ Zpátky</button>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="screen" id="s2">
+    <div class="detail">
+      <h2>⛳ Future Minigolf</h2>
+      <p>
+        Jedeme na <b>Future Minigolf v Brně</b>!<br>
+        jeeeeej 😄✨
+      </p>
+      <button class="back" onclick="home()">⬅ Zpátky</button>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="screen" id="s3">
+    <div class="detail">
+      <h2>🍣 Valentýnské menu</h2>
+      <p>
+        Jdeme na <b>Valentýnské menu do Soyshi</b>…<br>
+        juchůůů 💞
+      </p>
+      <button class="back" onclick="home()">⬅ Zpátky</button>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="screen" id="s4">
+    <div class="detail">
+      <h2>🥐☕ Sladká pauza</h2>
+      <p>
+        <b>Thomas &amp; Williams</b> – valentýnské croissanty
+        a dobrá káva… jeeeej 😄💘
+      </p>
+      <button class="back" onclick="home()">⬅ Zpátky</button>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="screen" id="s5">
+    <div class="detail">
+      <h2>🎬 Kino</h2>
+      <p>
+        Jdeme do <b>kina</b>… pohodlí, film,
+        společně 💞🎬
+      </p>
+      <button class="back" onclick="home()">⬅ Zpátky</button>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="screen" id="s6">
+    <div class="detail">
+      <h2>🛋️ Domů</h2>
+      <p>
+        Hurá domů po tak krásném dni…
+        odpočívat a být spolu 🥰✨
+      </p>
+      <button class="back" onclick="home()">⬅ Zpátky</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function show(n){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById('s'+n).classList.add('active');
+  }
+  function home(){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById('home').classList.add('active');
+  }
+</script>
+
+</body>
+</html>
